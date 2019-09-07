@@ -28,6 +28,7 @@ const Gallery = (props) => {
               imgUrl={img.download_url}
               title={img.author}
               description={img.width}
+              id={img.id}
             />
           )
         })

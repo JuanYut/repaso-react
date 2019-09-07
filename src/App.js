@@ -8,6 +8,7 @@ import Nav from './UI/Nav/Nav'
 import About from './UI/About/About'
 import Error404 from './components/Error404/Error404'
 import Gallery from './components/Gallery/Gallery'
+import GalleryDetail from './components/Gallery/GalleryDetail'
 
 const App = () => {
 
@@ -19,7 +20,8 @@ const App = () => {
           <Route path="/" exact component={Home}></Route>
           <Route path="/users" component={UsersFunctional}></Route>
           <Route path="/about" component={About}></Route>
-          <Route path="/gallery" component={Gallery}></Route>
+          <Route path="/gallery" exact component={Gallery}></Route>
+          <Route path="/gallery:id:title" component={GalleryDetail}></Route>
           <Route component={Error404}></Route>
 
         </Switch>
