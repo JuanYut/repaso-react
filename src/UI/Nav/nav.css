@@ -1,0 +1,23 @@
+Nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fb0091;
+}
+
+.nav-logo {
+  height: 40px;
+  width: 40px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+.nav-links li {
+  /* font-weight: bold; */
+}
+
+.nav-links li:first-child, li:nth-child(2) { margin-right: 30px; }

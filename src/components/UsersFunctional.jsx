@@ -20,9 +20,9 @@ const UsersFunctional = (props) => {
     <Fragment>
       <ul>
       {
-        users.map(user => {
+        users.map((user, index) => {
           return (
-          <li>
+          <li key={index}>
             {user.name}
           </li>
           )
