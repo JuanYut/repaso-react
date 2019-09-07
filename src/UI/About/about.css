@@ -1,0 +1,46 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+}
+
+.about-image {
+  height: 100px;
+  margin-bottom: 5px;
+}
+
+.about-title {
+  margin: 0;
+  width: 170px;
+  background-color: black;
+  color: white;
+}
+
+.about-hobbies {
+  margin: 0;
+  
+}
+
+.about-description {
+  margin: 0;
+  text-align: center;
+}
+
+.about-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-img-github {
+  height: 30px;
+}
+
+.social-link-github {
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 5px;
+  color: black;
+}

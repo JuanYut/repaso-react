@@ -16,10 +16,7 @@
   border-radius: 50%;
 }
 
-.card-title {
-  margin: 0;
-}
-
-.card-description {
+.card-title, .card-description {
+  text-align: center; 
   margin: 0;
 }

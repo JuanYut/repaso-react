@@ -3,6 +3,7 @@ Nav {
   justify-content: space-around;
   align-items: center;
   background-color: #fb0091;
+  width: 100%;
 }
 
 .nav-logo {
@@ -21,3 +22,8 @@ Nav {
 }
 
 .nav-links li:first-child, li:nth-child(2) { margin-right: 30px; }
+
+.link-comp {
+  text-decoration: none;
+  color: white;
+}
