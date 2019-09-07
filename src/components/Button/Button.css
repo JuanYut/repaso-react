@@ -1,0 +1,25 @@
+.btn-01 {
+  background-color: rgb(152, 108, 196);
+  color: white;
+  height: 50px;
+  width: 150px;
+  border-radius: 5%;
+  border: 2px solid black;
+}
+
+.btn-01:hover {
+  background-color: rgb(77, 33, 122);
+}
+
+.btn-02 {
+  background-color: rgb(206, 166, 35);
+  color: black;
+  height: 50px;
+  width: 150px;
+  border-radius: 5%;
+  border: 2px solid black;
+}
+
+.btn-02:hover {
+  background-color: rgb(167, 135, 29);
+}
