@@ -1,4 +1,4 @@
-import React , { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 
 import Button from './Button/Button'
 
@@ -20,9 +20,9 @@ const UsersFunctional = (props) => {
     <Fragment>
       <ul>
       {
-        users.map(user => {
+        users.map((user, index) => {
           return (
-          <li>
+          <li key={index}>
             {user.name}
           </li>
           )

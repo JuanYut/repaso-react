@@ -1,6 +1,10 @@
-.App {
+.error {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.error img {
+  height: 200px;
 }

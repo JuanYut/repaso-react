@@ -1,0 +1,11 @@
+.gallery {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: space-around;
+  flex-wrap: wrap;
+  width: 40%;
+}
+
+.gallery >* {
+  margin-top: 20px;
+}
