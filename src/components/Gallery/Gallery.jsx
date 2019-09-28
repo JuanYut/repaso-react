@@ -3,7 +3,7 @@ import './gallery.css';
 
 import Card from '../Card/Card';
 import { connect, useDispatch } from 'react-redux';
-import { getImages } from '../../actions/galleryAction';
+import { getImages } from '../../reducers/galleryReducer';
 
 const Gallery = props => {
   const dispatch = useDispatch();

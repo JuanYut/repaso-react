@@ -1,16 +1,35 @@
-import { GET_USERS } from '../actions/types';
+import axios from 'axios';
 
-const initialState = {
-  users: []
+// * ACTION TYPE/CONSTANTS
+const ACTIONS = {
+  GET_USERS: 'react-bedu/users/GET_USERS'
 };
 
-const usersReducer = (state = initialState, action) => {
+// * DEFAULT STATE
+const initialState = { users: [] };
+
+export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_USERS:
+    case ACTIONS.GET_USERS:
       return { ...state, users: action.users };
     default:
       return state;
   }
 };
 
-export default usersReducer;
+// * ACTIONS
+export const setUsers = users => {
+  return {
+    type: ACTIONS.GET_USERS,
+    users
+  };
+};
+
+// * ASYNC ACTION FUNCTION
+export const getUsers = () => {
+  return async dispatch => {
+    const users = await axios.get('https://jsonplaceholder.typicode.com/users');
+    console.log('AXIOS USERS =>', users);
+    dispatch(setUsers(users.data));
+  };
+};

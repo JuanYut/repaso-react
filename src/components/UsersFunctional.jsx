@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import { getUsers } from '../actions/usersAction';
+import { getUsers } from '../reducers/usersReducer';
 
 import Button from './Button/Button';
 
