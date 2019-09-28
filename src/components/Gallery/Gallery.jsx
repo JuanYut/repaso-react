@@ -1,40 +1,39 @@
-import React, { useState, useEffect } from 'react'
-import './gallery.css'
+import React, { useState, useEffect } from 'react';
+import './gallery.css';
 
-import Card from '../Card/Card'
+import Card from '../Card/Card';
+import { connect, useDispatch } from 'react-redux';
+import { setImages } from '../../actions/galleryAction';
 
-const Gallery = (props) => {
+const Gallery = props => {
+  const dispatch = useDispatch();
+  const { images } = props;
 
-  const [images, setImages] = useState([])
-  
   useEffect(() => {
-    fetchImages()
-    console.log(images)
-  }, [])
-
-  const fetchImages = () => {
     fetch('https://picsum.photos/v2/list?limit=20')
-    .then(response => response.json())
-    .then(jsonThing => setImages(jsonThing))
-  }
+      .then(response => response.json())
+      .then(jsonThing => dispatch(setImages(jsonThing)));
+  }, []);
 
   return (
-    <div className="gallery">
-      {
-        images.map( (img, index) => {
-          return (
-            <Card 
-              key={index}
-              imgUrl={img.download_url}
-              title={img.author}
-              description={img.width}
-              id={img.id}
-            />
-          )
-        })
-      }
+    <div className='gallery'>
+      {images.map((img, index) => {
+        return (
+          <Card
+            key={index}
+            imgUrl={img.download_url}
+            title={img.author}
+            description={img.width}
+            id={img.id}
+          />
+        );
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default Gallery
+const mapStateToProps = ({ galleryReducer }) => ({
+  images: galleryReducer.images
+});
+
+export default connect(mapStateToProps)(Gallery);
