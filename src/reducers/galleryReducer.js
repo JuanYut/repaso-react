@@ -1,16 +1,37 @@
-import { SET_IMAGES } from '../actions/types';
+import axios from 'axios';
 
-const initialState = {
-  images: []
+// * ACTION TYPE/CONSTANTS
+const ACTIONS = {
+  SET_IMAGES: 'react-bedu/gallery/SET_IMAGES' // project-feature-tipo
 };
 
-const galleryReducer = (state = initialState, action) => {
+// * DEFAULT STATE
+const initialState = { images: [] };
+
+export default (state = initialState, action) => {
   switch (action.type) {
-    case SET_IMAGES:
+    case ACTIONS.SET_IMAGES:
       return { ...state, images: action.images };
     default:
       return state;
   }
 };
 
-export default galleryReducer;
+// * ACTIONS
+export const setImages = images => {
+  return {
+    type: ACTIONS.SET_IMAGES,
+    images
+  };
+};
+
+//  * ASYNC ACTION FUNCTION
+export const getImages = () => {
+  return async dispatch => {
+    const images = await axios.get('https://picsum.photos/v2/list', {
+      params: { limit: 6 }
+    });
+    console.log('AXIOS IMAGES =>', images);
+    dispatch(setImages(images.data));
+  };
+};

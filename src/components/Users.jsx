@@ -1,37 +1,26 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { getUsers } from '../actions/usersAction';
 
-class Users extends Component {
+const Users = props => {
+  const dispatch = useDispatch();
+  const { users } = props;
 
-  constructor(props) {
-    super(props)
+  useEffect(() => {
+    dispatch(getUsers());
+  }, []);
 
-    this.state = {
-      users: []
-    }
-  }
+  return (
+    <ul>
+      {users.map(user => {
+        return <li>{user.name}</li>;
+      })}
+    </ul>
+  );
+};
 
-  componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(jsonThing => this.setState({ users: jsonThing }))
-  }
+const mapStateToProps = ({ usersReducer }) => ({
+  users: usersReducer.users
+});
 
-  render() {
-    const {users} = this.state
-    console.log(users)
-    return (
-      <ul>
-        {
-          users.map(user => {
-            return (
-            <li>
-              {user.name}
-            </li>
-            )
-          })
-        }
-      </ul>
-    )
-  }
-}
-export default Users
+export default connect(mapStateToProps)(Users);

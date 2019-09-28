@@ -1,38 +1,36 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useEffect, Fragment } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { getUsers } from '../reducers/usersReducer';
 
-import Button from './Button/Button'
+import Button from './Button/Button';
 
-const UsersFunctional = (props) => {
-
-  const [users, setUsers] = useState([])
+const UsersFunctional = props => {
+  const dispatch = useDispatch();
+  const { users } = props;
 
   useEffect(() => {
-    // fetchUsers()
-  }, [])
+    // dispatch(getUsers());
+  }, []);
 
-  const fetchUsers = () => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(jsonThing => setUsers(jsonThing))
-  }
-
-  return(
+  return (
     <Fragment>
       <ul>
-      {
-        users.map((user, index) => {
-          return (
-          <li key={index}>
-            {user.name}
-          </li>
-          )
-        })
-      }
+        {users.map((user, index) => {
+          return <li key={index}>{user.name}</li>;
+        })}
       </ul>
       {props.children}
-      <Button className="btn-01" text="Load Users" action={() => fetchUsers() } />
+      <Button
+        className='btn-01'
+        text='Load Users'
+        action={() => dispatch(getUsers())}
+      />
     </Fragment>
-    
-  )
-}
-export default UsersFunctional
+  );
+};
+
+const mapStateToProps = ({ usersReducer }) => ({
+  users: usersReducer.users
+});
+
+export default connect(mapStateToProps)(UsersFunctional);
