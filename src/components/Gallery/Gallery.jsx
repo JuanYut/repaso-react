@@ -3,16 +3,14 @@ import './gallery.css';
 
 import Card from '../Card/Card';
 import { connect, useDispatch } from 'react-redux';
-import { setImages } from '../../actions/galleryAction';
+import { getImages } from '../../actions/galleryAction';
 
 const Gallery = props => {
   const dispatch = useDispatch();
   const { images } = props;
 
   useEffect(() => {
-    fetch('https://picsum.photos/v2/list?limit=20')
-      .then(response => response.json())
-      .then(jsonThing => dispatch(setImages(jsonThing)));
+    dispatch(getImages());
   }, []);
 
   return (
